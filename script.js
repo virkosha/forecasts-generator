@@ -13,3 +13,24 @@
 /* При генерации нового предсказания старое предсказание должно добавляться в начало списка «Мои предсказания» — .forecasts  */
 
 /* Для добавления предсказания в список воспользуйся шаблоном forecast-item */
+
+const btn = document.querySelector('.forecast-btn');
+const forecastTemplate = document.querySelector('#forecast-item');
+
+function makeForecast(title, probability) {
+    const forecast = forecastTemplate.textContent.cloneNode(true);
+
+    forecast.querySelector('h3').textContent = title;
+    forecast.querySelector('p').textContent = probability;
+
+    return forecast;
+}
+
+
+
+btn.addEventListener('click', function() {
+    const testForecast = makeForecast('удача', 'тебе сегодня улыбнется');
+    const containerForecast = document.querySelector('.forecasts');
+    containerForecast.append(testForecast);
+
+})
