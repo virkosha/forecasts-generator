@@ -18,7 +18,7 @@ const btn = document.querySelector('.forecast-btn');
 const forecastTemplate = document.querySelector('#forecast-item');
 
 function makeForecast(title, probability) {
-    const forecast = forecastTemplate.textContent.cloneNode(true);
+    const forecast = forecastTemplate.content.cloneNode(true);
 
     forecast.querySelector('h3').textContent = title;
     forecast.querySelector('p').textContent = probability;
@@ -29,8 +29,44 @@ function makeForecast(title, probability) {
 
 
 btn.addEventListener('click', function() {
-    const testForecast = makeForecast('удача', 'тебе сегодня улыбнется');
+
+    function randomProbability() {
+        let resultProbability = Math.round(Math.random() * (100 - 1) + 1);
+    }
+    randomProbability();
+
     const containerForecast = document.querySelector('.forecasts');
-    containerForecast.append(testForecast);
+    const forecastOne = makeForecast(`Удача сопровождает тебя весь день', 'Вероятность: ${resultProbability} %`);
+    const forecastTwo = makeForecast(`Радостная встреча за кофе с десертом', 'Вероятность: ${resultProbability} %`);
+    const forecastThree = makeForecast(`Уборку никто не отменял', 'Вероятность: ${resultProbability} %`);
+    const forecastFour = makeForecast(`Неожиданные деньги пополнят твой кошелек', 'Вероятность: ${resultProbability} %`);
+    const forecastFive = makeForecast(`Сделай укладку, тебя ждет свидание', 'Вероятность: ${resultProbability} %`);
+
+
+    function randomForecast() {
+        let resultRandom = Math.round(Math.random() * (5 - 1) + 1);
+        switch (resultRandom) {
+            case 1:
+                containerForecast.append(forecastOne);
+                break;
+            case 2:
+                containerForecast.append(forecastTwo);
+                break;
+            case 3:
+                containerForecast.append(forecastThree);
+                break;
+            case 4:
+                containerForecast.append(forecastFour);
+                break;
+            case 5:
+                containerForecast.append(forecastFive);
+                break;
+            default:
+                return 'Предсказание запуталось, попробуй вновь';
+                break;
+
+        }
+    }
+    randomForecast();
 
 })
