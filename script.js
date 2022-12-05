@@ -31,16 +31,17 @@ function makeForecast(title, probability) {
 btn.addEventListener('click', function() {
 
     function randomProbability() {
-        let resultProbability = Math.round(Math.random() * (100 - 1) + 1);
+        return Math.round(Math.random() * (100 - 1) + 1);
+
     }
     randomProbability();
 
     const containerForecast = document.querySelector('.forecasts');
-    const forecastOne = makeForecast(`Удача сопровождает тебя весь день', 'Вероятность: ${resultProbability} %`);
-    const forecastTwo = makeForecast(`Радостная встреча за кофе с десертом', 'Вероятность: ${resultProbability} %`);
-    const forecastThree = makeForecast(`Уборку никто не отменял', 'Вероятность: ${resultProbability} %`);
-    const forecastFour = makeForecast(`Неожиданные деньги пополнят твой кошелек', 'Вероятность: ${resultProbability} %`);
-    const forecastFive = makeForecast(`Сделай укладку, тебя ждет свидание', 'Вероятность: ${resultProbability} %`);
+    const forecastOne = makeForecast(`Удача сопровождает тебя весь день`, `Вероятность: ${randomProbability()} %`);
+    const forecastTwo = makeForecast(`Радостная встреча за кофе с десертом`, `Вероятность: ${randomProbability()} %`);
+    const forecastThree = makeForecast(`Уборку никто не отменял`, `Вероятность: ${randomProbability()} %`);
+    const forecastFour = makeForecast(`Неожиданные деньги пополнят твой кошелек`, `Вероятность: ${randomProbability()} %`);
+    const forecastFive = makeForecast(`Сделай укладку, тебя ждет свидание`, `Вероятность: ${randomProbability()} %`);
 
 
     function randomForecast() {
