@@ -13,3 +13,61 @@
 /* При генерации нового предсказания старое предсказание должно добавляться в начало списка «Мои предсказания» — .forecasts  */
 
 /* Для добавления предсказания в список воспользуйся шаблоном forecast-item */
+
+const btn = document.querySelector('.forecast-btn');
+const forecastTemplate = document.querySelector('#forecast-item');
+
+function makeForecast(title, probability) {
+    const forecast = forecastTemplate.content.cloneNode(true);
+
+    forecast.querySelector('h3').textContent = title;
+    forecast.querySelector('p').textContent = probability;
+
+    return forecast;
+}
+
+
+
+btn.addEventListener('click', function() {
+
+    function randomProbability() {
+        return Math.round(Math.random() * (100 - 1) + 1);
+
+    }
+    randomProbability();
+
+    const containerForecast = document.querySelector('.forecasts');
+    const forecastOne = makeForecast(`Удача сопровождает тебя весь день`, `Вероятность: ${randomProbability()} %`);
+    const forecastTwo = makeForecast(`Радостная встреча за кофе с десертом`, `Вероятность: ${randomProbability()} %`);
+    const forecastThree = makeForecast(`Уборку никто не отменял`, `Вероятность: ${randomProbability()} %`);
+    const forecastFour = makeForecast(`Неожиданные деньги пополнят твой кошелек`, `Вероятность: ${randomProbability()} %`);
+    const forecastFive = makeForecast(`Сделай укладку, тебя ждет свидание`, `Вероятность: ${randomProbability()} %`);
+
+
+    function randomForecast() {
+        let resultRandom = Math.round(Math.random() * (5 - 1) + 1);
+        switch (resultRandom) {
+            case 1:
+                containerForecast.append(forecastOne);
+                break;
+            case 2:
+                containerForecast.append(forecastTwo);
+                break;
+            case 3:
+                containerForecast.append(forecastThree);
+                break;
+            case 4:
+                containerForecast.append(forecastFour);
+                break;
+            case 5:
+                containerForecast.append(forecastFive);
+                break;
+            default:
+                return 'Предсказание запуталось, попробуй вновь';
+                break;
+
+        }
+    }
+    randomForecast();
+
+})
